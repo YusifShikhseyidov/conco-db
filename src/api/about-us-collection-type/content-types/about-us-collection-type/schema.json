@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "about_us_collection_types",
+  "info": {
+    "singularName": "about-us-collection-type",
+    "pluralName": "about-us-collection-types",
+    "displayName": "about-us-collection-type"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "conco_about_us": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "text",
+      "required": true
+    },
+    "conco_about_us_cover_img": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": true
+    }
+  }
+}
