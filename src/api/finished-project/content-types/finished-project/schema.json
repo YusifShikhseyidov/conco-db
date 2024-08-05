@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "finished_projects",
+  "info": {
+    "singularName": "finished-project",
+    "pluralName": "finished-projects",
+    "displayName": "finished-project"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "finished_project_imgs": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "required": true
+    },
+    "finished_project_heading": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true
+    }
+  }
+}

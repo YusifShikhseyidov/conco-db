@@ -843,6 +843,200 @@ export interface ApiAboutUsCollectionTypeAboutUsCollectionType
   };
 }
 
+export interface ApiFinishedProjectFinishedProject
+  extends Schema.CollectionType {
+  collectionName: 'finished_projects';
+  info: {
+    singularName: 'finished-project';
+    pluralName: 'finished-projects';
+    displayName: 'finished-project';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    finished_project_imgs: Attribute.Media<'images', true> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    finished_project_heading: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::finished-project.finished-project',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::finished-project.finished-project',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::finished-project.finished-project',
+      'oneToMany',
+      'api::finished-project.finished-project'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiOngoingProjectOngoingProject extends Schema.CollectionType {
+  collectionName: 'ongoing_projects';
+  info: {
+    singularName: 'ongoing-project';
+    pluralName: 'ongoing-projects';
+    displayName: 'ongoing-project';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    ongoing_project_imgs: Attribute.Media<'images', true> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    ongoing_project_heading: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::ongoing-project.ongoing-project',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::ongoing-project.ongoing-project',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::ongoing-project.ongoing-project',
+      'oneToMany',
+      'api::ongoing-project.ongoing-project'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiOrdererOrderer extends Schema.CollectionType {
+  collectionName: 'orderers';
+  info: {
+    singularName: 'orderer';
+    pluralName: 'orderers';
+    displayName: 'orderer';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    orderer_logo: Attribute.Media<'images', true> & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::orderer.orderer',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::orderer.orderer',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiRestorationProjectRestorationProject
+  extends Schema.CollectionType {
+  collectionName: 'restoration_projects';
+  info: {
+    singularName: 'restoration-project';
+    pluralName: 'restoration-projects';
+    displayName: 'restoration-project';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    restoration_project_imgs: Attribute.Media<'images', true> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    restoration_project_heading: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::restoration-project.restoration-project',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::restoration-project.restoration-project',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::restoration-project.restoration-project',
+      'oneToMany',
+      'api::restoration-project.restoration-project'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 export interface ApiSliderImagesHeadingSliderImagesHeading
   extends Schema.CollectionType {
   collectionName: 'slider_images_headings';
@@ -898,6 +1092,67 @@ export interface ApiSliderImagesHeadingSliderImagesHeading
   };
 }
 
+export interface ApiVacancyVacancy extends Schema.CollectionType {
+  collectionName: 'vacancies';
+  info: {
+    singularName: 'vacancy';
+    pluralName: 'vacancies';
+    displayName: 'vacancy';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    vacancy_title: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    vacancy_description: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    vacancy_salary: Attribute.BigInteger &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::vacancy.vacancy',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::vacancy.vacancy',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::vacancy.vacancy',
+      'oneToMany',
+      'api::vacancy.vacancy'
+    >;
+    locale: Attribute.String;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -917,7 +1172,12 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::about-us-collection-type.about-us-collection-type': ApiAboutUsCollectionTypeAboutUsCollectionType;
+      'api::finished-project.finished-project': ApiFinishedProjectFinishedProject;
+      'api::ongoing-project.ongoing-project': ApiOngoingProjectOngoingProject;
+      'api::orderer.orderer': ApiOrdererOrderer;
+      'api::restoration-project.restoration-project': ApiRestorationProjectRestorationProject;
       'api::slider-images-heading.slider-images-heading': ApiSliderImagesHeadingSliderImagesHeading;
+      'api::vacancy.vacancy': ApiVacancyVacancy;
     }
   }
 }
