@@ -362,116 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiAboutUsCollectionTypeAboutUsCollectionType
-  extends Schema.CollectionType {
-  collectionName: 'about_us_collection_types';
-  info: {
-    singularName: 'about-us-collection-type';
-    pluralName: 'about-us-collection-types';
-    displayName: 'about-us-collection-type';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
-  attributes: {
-    conco_about_us: Attribute.Text &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    conco_about_us_cover_img: Attribute.Media<'images'> &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::about-us-collection-type.about-us-collection-type',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::about-us-collection-type.about-us-collection-type',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    localizations: Attribute.Relation<
-      'api::about-us-collection-type.about-us-collection-type',
-      'oneToMany',
-      'api::about-us-collection-type.about-us-collection-type'
-    >;
-    locale: Attribute.String;
-  };
-}
-
-export interface ApiSliderImagesHeadingSliderImagesHeading
-  extends Schema.CollectionType {
-  collectionName: 'slider_images_headings';
-  info: {
-    singularName: 'slider-images-heading';
-    pluralName: 'slider-images-headings';
-    displayName: 'slider-images-heading';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  pluginOptions: {
-    i18n: {
-      localized: true;
-    };
-  };
-  attributes: {
-    slider_img: Attribute.Media<'images', true> &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: false;
-        };
-      }>;
-    slider_heading: Attribute.String &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true;
-        };
-      }>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::slider-images-heading.slider-images-heading',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::slider-images-heading.slider-images-heading',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    localizations: Attribute.Relation<
-      'api::slider-images-heading.slider-images-heading',
-      'oneToMany',
-      'api::slider-images-heading.slider-images-heading'
-    >;
-    locale: Attribute.String;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -700,6 +590,53 @@ export interface PluginContentReleasesReleaseAction
   };
 }
 
+export interface PluginI18NLocale extends Schema.CollectionType {
+  collectionName: 'i18n_locale';
+  info: {
+    singularName: 'locale';
+    pluralName: 'locales';
+    collectionName: 'locales';
+    displayName: 'Locale';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+  };
+  attributes: {
+    name: Attribute.String &
+      Attribute.SetMinMax<
+        {
+          min: 1;
+          max: 50;
+        },
+        number
+      >;
+    code: Attribute.String & Attribute.Unique;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'plugin::i18n.locale',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'plugin::i18n.locale',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface PluginUsersPermissionsPermission
   extends Schema.CollectionType {
   collectionName: 'up_permissions';
@@ -851,50 +788,113 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
-export interface PluginI18NLocale extends Schema.CollectionType {
-  collectionName: 'i18n_locale';
+export interface ApiAboutUsCollectionTypeAboutUsCollectionType
+  extends Schema.CollectionType {
+  collectionName: 'about_us_collection_types';
   info: {
-    singularName: 'locale';
-    pluralName: 'locales';
-    collectionName: 'locales';
-    displayName: 'Locale';
-    description: '';
+    singularName: 'about-us-collection-type';
+    pluralName: 'about-us-collection-types';
+    displayName: 'about-us-collection-type';
   };
   options: {
-    draftAndPublish: false;
+    draftAndPublish: true;
   };
   pluginOptions: {
-    'content-manager': {
-      visible: false;
-    };
-    'content-type-builder': {
-      visible: false;
+    i18n: {
+      localized: true;
     };
   };
   attributes: {
-    name: Attribute.String &
-      Attribute.SetMinMax<
-        {
-          min: 1;
-          max: 50;
-        },
-        number
-      >;
-    code: Attribute.String & Attribute.Unique;
+    conco_about_us: Attribute.Text &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    conco_about_us_cover_img: Attribute.Media<'images'> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'plugin::i18n.locale',
+      'api::about-us-collection-type.about-us-collection-type',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'plugin::i18n.locale',
+      'api::about-us-collection-type.about-us-collection-type',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::about-us-collection-type.about-us-collection-type',
+      'oneToMany',
+      'api::about-us-collection-type.about-us-collection-type'
+    >;
+    locale: Attribute.String;
+  };
+}
+
+export interface ApiSliderImagesHeadingSliderImagesHeading
+  extends Schema.CollectionType {
+  collectionName: 'slider_images_headings';
+  info: {
+    singularName: 'slider-images-heading';
+    pluralName: 'slider-images-headings';
+    displayName: 'slider-images-heading';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    slider_img: Attribute.Media<'images', true> &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
+    slider_heading: Attribute.String &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::slider-images-heading.slider-images-heading',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::slider-images-heading.slider-images-heading',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    localizations: Attribute.Relation<
+      'api::slider-images-heading.slider-images-heading',
+      'oneToMany',
+      'api::slider-images-heading.slider-images-heading'
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -908,16 +908,16 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::about-us-collection-type.about-us-collection-type': ApiAboutUsCollectionTypeAboutUsCollectionType;
-      'api::slider-images-heading.slider-images-heading': ApiSliderImagesHeadingSliderImagesHeading;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
+      'plugin::i18n.locale': PluginI18NLocale;
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
-      'plugin::i18n.locale': PluginI18NLocale;
+      'api::about-us-collection-type.about-us-collection-type': ApiAboutUsCollectionTypeAboutUsCollectionType;
+      'api::slider-images-heading.slider-images-heading': ApiSliderImagesHeadingSliderImagesHeading;
     }
   }
 }
